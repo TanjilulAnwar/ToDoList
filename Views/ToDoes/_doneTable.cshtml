@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ToDoList.Models.Done>
+
+
+<table class="table">
+    <tr>
+        <th>
+           
+            Task
+        </th>
+       
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+              
+                    @Html.DisplayFor(modelItem => item.Description)
+                
+            </td>
+            <td>
+                Yes
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "DoneEdit", new { id = item.id }) |
+                @Html.ActionLink("Delete", "DoneDelete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>
+

@@ -1,0 +1,20 @@
+﻿@model ToDoList.Models.Done
+
+@{
+    ViewBag.Title = "Completed";
+}
+
+
+
+<p><font color="#669A8E"> <h3>Your Completed task</h3> </font></p>
+
+
+<div id="tableDiv"></div>
+
+
+
+@section Scripts {
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Custom_Scripts/BuildTableDone.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+}

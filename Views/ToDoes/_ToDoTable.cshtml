@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ToDoList.Models.ToDo>
+
+
+<table class="table">
+    <tr>
+        <th>
+            <!--@Html.DisplayNameFor(model => model.isDone)-->  
+            Task
+        </th>
+        <th>
+            <!--@Html.DisplayNameFor(model => model.isDone)-->
+            Status
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+              @if(!item.isDone){
+                @Html.DisplayFor(modelItem => item.Description)
+            }
+            else
+            {
+                <div class="CompletedToDo">
+
+                @Html.DisplayFor(modelItem => item.Description)
+                
+                </div>
+            
+            }
+
+            </td>
+            <td>
+                @Html.CheckBoxFor(modelItem => item.isDone, new { id =item.id, @class ="ActiveCheck"})
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id  }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>
+<script src="~/Custom_Scripts/AddCheckBoxListener.js"></script>

@@ -1,0 +1,39 @@
+﻿@model ToDoList.Models.ToDo
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<p><font color="#669A8E"> <h3>Your Schedule</h3> </font></p>
+
+<p><font color="#DD4E4E">Add task here </font></p>
+<div id=" todoCreateFrom">
+    @using (Ajax.BeginForm("AJAXCreate", "ToDoes", new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod = "POST",
+        UpdateTargetId = "tableDiv"
+    }))
+    {
+        <div class="form-group">
+
+            @Html.AntiForgeryToken()
+
+            <div>
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    }
+</div>
+<div id="tableDiv"></div>
+
+
+
+@section Scripts {
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Custom_Scripts/BuildTable.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+}
